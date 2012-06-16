@@ -106,8 +106,8 @@ int callback(int device, Finger *data, int nFingers, double timestamp, int frame
 			if (elapsedTime < 0.2f && middleclickX+middleclickY) {
 				float dx = (middleclickX-middleclickX2);
 				float dy = (middleclickY-middleclickY2);
-				float delta = (dx*dx)+(dy*dy); 
-				if (delta < 1.0f) {
+				float delta = fabsf(dx)+fabsf(dy); 
+				if (delta < 0.05f) {
 					// Emulate a middle click
 					
 					// get the current pointer location
